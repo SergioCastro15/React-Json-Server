@@ -1,0 +1,28 @@
+{
+  "Games": [
+    {
+      "name": "Overwatch",
+      "gender": "FPS",
+      "description": "is a great game",
+      "id": 1
+    },
+    {
+      "name": "Crash",
+      "gender": "plataform",
+      "description": "crash is creazy",
+      "id": 2
+    },
+    {
+      "name": "The legend of Zelda ocarina of time",
+      "gender": "puzle",
+      "description": "its a great game",
+      "id": 4
+    },
+    {
+      "name": "Mario 64",
+      "gender": "platforms",
+      "description": "i love this game",
+      "id": 7
+    }
+  ]
+}
