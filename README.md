@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install json-server
-for Mac : sudo npm install -g json-server
+for Mac : sudo npm install -g json-server <br>
 for Windows: run as administrator the last command without sudo
 
 ## run server
