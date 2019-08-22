@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Install json-server
+for Mac : sudo npm install -g json-server
+for Windows: run as administrator the last command without sudo
+
+## run server
+json-server db.json -p 4000 
+
 ## Available Scripts
 
 In the project directory, you can run:
