@@ -1,27 +1,22 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { addGameDB } from '../api';
 import GameForm from '../components/GameForm';
 
 const AddGames = ({ history }) => {
-  const [game, saveGame] = useState('');
-  const [gender, saveGender] = useState('');
-  const [description, saveDescription] = useState('');
+  const [game, setGame] = useState('');
+  const [gender, setGender] = useState('');
+  const [description, setDescription] = useState('');
+
   const addGame = async (e) => {
     e.preventDefault();
     try {
-      const saved = await fetch('http://localhost:4000/games', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: game,
-          gender,
-          description,
-        }),
+      const response = await addGameDB({
+        name: game,
+        gender,
+        description,
       });
-      console.log(saved);
+      console.log(response);
       history.push('/');
     } catch (err) {
       console.log(err);
@@ -29,10 +24,13 @@ const AddGames = ({ history }) => {
   };
   return (
     <GameForm
-      saveGame={saveGame}
-      saveGender={saveGender}
-      saveDescription={saveDescription}
-      addGame={addGame}
+      setGame={setGame}
+      setGender={setGender}
+      setDescription={setDescription}
+      game={game}
+      gender={gender}
+      description={description}
+      onSubmit={addGame}
     />
   );
 };

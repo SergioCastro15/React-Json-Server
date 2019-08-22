@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { getGamesDB } from '../api';
 import GamesPlayed from '../components/Games';
 
 const Games = () => {
   const [games, saveGames] = useState([]);
   const [refreshApi, saveRefreshAPI] = useState(true);
+
   useEffect(() => {
     const callApi = async () => {
-      const response = await fetch('http://localhost:4000/games');
-      const data = await response.json();
+      const data = await getGamesDB();
       saveGames(data);
     };
     if (refreshApi) {
@@ -15,6 +16,7 @@ const Games = () => {
     }
     saveRefreshAPI(false);
   }, [refreshApi]);
+
   return (
     <GamesPlayed games={games} saveRefreshAPI={saveRefreshAPI} />
   );

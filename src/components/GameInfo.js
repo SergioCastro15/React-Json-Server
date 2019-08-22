@@ -1,17 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { deleteGameDB } from '../api';
 
 const GameInfo = ({ history, game, saveRefreshAPI }) => {
   const deleteGame = async (id) => {
     try {
-      const deleteGameId = await fetch(`http://localhost:4000/games/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(deleteGameId);
+      const response = await deleteGameDB(id);
+      console.log(response);
       saveRefreshAPI(true);
     } catch (err) {
       console.log(err);
