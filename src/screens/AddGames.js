@@ -4,28 +4,30 @@ import { addGameDB } from '../api';
 import GameForm from '../components/GameForm';
 
 const AddGames = ({ history }) => {
-
-  const addGame = async (e, {
+  const addGame = async ({
     game,
     gender,
-    description
+    description,
   }) => {
-    e.preventDefault();
     try {
       await addGameDB({
         name: game,
         gender,
-        description
+        description,
       });
       history.push('/');
     } catch (err) {
       console.log(err);
     }
   };
+  // (e) => {
+  //   e.preventDefault();
+  //   return asdasd;
+  // }
 
   return (
     <GameForm
-      onSubmit={addGame}
+      onSubmitHandler={addGame}
     />
   );
 };

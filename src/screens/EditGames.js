@@ -5,25 +5,27 @@ import GameForm from '../components/GameForm';
 
 const EditGames = ({ history, match }) => {
   const [newGame, setNewGame] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getGame = async () => {
       try {
         const response = await getGameDB(match.params.id);
         setNewGame(response);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
     };
     getGame();
   }, [match.params.id]);
+  console.log('newGame', newGame);
 
-  const editGame = async (e, {
+  const editGame = async ({
     game,
     gender,
     description,
   }) => {
-    e.preventDefault();
     try {
       await editGameDB(match.params.id, {
         name: game,
@@ -36,12 +38,16 @@ const EditGames = ({ history, match }) => {
     }
   };
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <GameForm
       gameEdit={newGame.name}
       genderEdit={newGame.gender}
       descriptionEdit={newGame.description}
-      onSubmit={editGame}
+      onSubmitHandler={editGame}
     />
   );
 };
